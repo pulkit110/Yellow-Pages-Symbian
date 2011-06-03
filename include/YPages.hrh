@@ -1,0 +1,17 @@
+/*=====================================
+     YPages.hrh
+=====================================*/
+
+#ifndef __YPAGES_HRH__
+#define __YPAGES_HRH__
+
+/** YPages enumerate command codes */
+enum TYPagesIds {
+       EYPagesCommand = 1,  // start value must not be 0
+       EYPagesDialog,
+       EYPagesTextLabel,
+       EYPagesText,
+       EYPagesPopup
+};
+
+#endif // __YPAGES_HRH__

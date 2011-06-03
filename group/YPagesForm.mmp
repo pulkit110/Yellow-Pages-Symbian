@@ -1,0 +1,32 @@
+TARGET            YPagesForm.exe
+TARGETTYPE        exe
+UID               0x100039CE 0xE004050F
+
+TARGETPATH        \system\apps\YPages
+
+
+SOURCEPATH        ..\group
+
+START RESOURCE YPagesForm_reg.rss
+	TARGETPATH \private\10003a3f\apps
+END
+
+START RESOURCE YPagesForm.rss
+	HEADER
+	TARGETPATH resource\apps
+END
+
+
+SOURCEPATH        ..\src
+SOURCE            YPages.cpp
+SOURCE            YPagesApplication.cpp YPagesAppView.cpp YPagesAppUi.cpp YPagesDocument.cpp YPagesForm1.cpp YPagesForm.cpp
+
+
+
+SYSTEMINCLUDE     \epoc32\include
+USERINCLUDE       ..\include
+
+
+LIBRARY           euser.lib apparc.lib cone.lib eikcore.lib  
+LIBRARY           avkon.lib gdi.lib 
+LIBRARY   eikdlg.lib eikcoctl.lib efsrv.lib estor.lib 

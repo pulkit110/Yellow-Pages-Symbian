@@ -1,0 +1,275 @@
+// YPagesForm.rss
+
+/*=====================================
+   S60 YPages Resource File
+=====================================*/
+
+NAME SIMP
+
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+
+#include "YPages.hrh"					// Include the Command Codes
+#include "YPagesForm_en.rls"			// Include the English strings
+
+/*
+ * The RSS_SIGNATURE resource is used to validate the file and must appear, exactly as shown 
+ * below, as the first resource in every appliation's resource file.
+ */
+RESOURCE RSS_SIGNATURE {
+ 
+}
+
+/*
+ * TBUF Resource defines the default document name. As a document is not used in the, 
+ * it is left blank.
+ */
+RESOURCE TBUF r_default_document_name {
+    buf="";
+}
+
+/*
+ * The EIK_APP_INFO Resource defines a Control Button Array resource and a menu resource.
+ */
+RESOURCE EIK_APP_INFO {
+    /*
+     * Make a menubar which points to a MENU_BAR resource which contains menu items.
+     */
+    menubar = r_YPages_menubar;
+    
+    /*
+     * Make the left Softkey of the application to read as Options and the right as Exit.
+     */
+    cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+}
+
+/*
+ * Create a MENU_BAR Resource for the menu which would pop up after pressing left soft key.
+ */
+RESOURCE MENU_BAR r_YPages_menubar {
+	/*
+	 * Define titles(can be more than one), which points to a resource of type MENU_TITLE.
+	 */
+	titles =
+        {
+        MENU_TITLE
+            {
+            /*
+             * Define menu_pane which points to MENU_PANE Resource.
+             */ 
+            menu_pane = r_YPages_menu;
+            }
+        };
+}
+
+/*
+ * Create a MENU_PANE Resource. It defines the actual menu items (type MENU_ITEM),
+ * which the user selects to invoke some operation.
+ */
+RESOURCE MENU_PANE r_YPages_menu {
+    items = 
+        {
+        /*
+         * Define a MENU_ITEM to provide user for selecting the city.
+         */
+        MENU_ITEM
+            {
+           command = EYPagesDialog;			// Command to be generated when this item is selected.
+            txt = STRING_r_gui_settings;	// Text to be displayed. 
+            }
+        };
+}
+
+/*
+ * Define a dialog to provide for seection of city. 
+ * Set the flags.
+ * Define buttons.
+ * define form.
+ */
+RESOURCE DIALOG r_YPages_dialog {
+	/*
+	 * Set the flags as per the applications needs.
+	 */
+    flags=EEikDialogFlagNoDrag|EEikDialogFlagFillAppClientRect|
+          EEikDialogFlagNoTitleBar|EEikDialogFlagWait|
+          EEikDialogFlagCbaButtons;
+    /*
+     * Define the functions for left & right softkeys(Options & Back respectively)
+     */
+    buttons=R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    
+    /*
+     * Define a form that points to a FORM Resource.
+     */
+    form=r_YPages_form;
+}
+
+/*
+ * Create a FORM Resource to display the form dialog.
+ * Set the flags.
+ * Set the items.
+ */
+RESOURCE FORM r_YPages_form {
+	/*
+	 * Set the flags.
+	 * Edit Mode Only and Double Spaced Format (to display heading and text in different lines)
+	 */
+    flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly;
+
+    /*
+     * Set the form items.
+     * Here, we need just one item to select the city.
+     */
+    items=
+        {
+        DLG_LINE
+            {
+            type=EAknCtPopupFieldText;	// Set te item type to Popup Field.
+            prompt=STRING_r_gui_city;	// Set the prompt(Heading) as "City"
+            id=EYPagesPopup;			// Set the item id.
+            itemflags=EEikDlgItemTakesEnterKey|EEikDlgItemOfferAllHotKeys;	// Set the item flags.
+            control = POPUP_FIELD_TEXT
+                {
+                popupfield=POPUP_FIELD
+                    {
+                    width=10;
+                    };
+                textarray=r_city_list;	// Define the city list to be displayed.
+                };
+            }
+        };
+}
+
+/*
+ * Create a Resource ARRAY to define City list.
+ */
+RESOURCE ARRAY r_city_list {
+	/*
+	 * Define the items in the list.
+	 */
+	items=
+		{
+    	LBUF { txt=STRING_r_gui_City1; },
+        LBUF { txt=STRING_r_gui_City2; },
+        LBUF { txt=STRING_r_gui_City3; },
+        LBUF { txt=STRING_r_gui_City4; }
+		};
+}
+
+/*
+ * Define a dialog to provide for seection of category. 
+ * Set the flags.
+ * Define buttons.
+ * define form.
+ */
+RESOURCE DIALOG r_YPages_dialog_a {
+	/*
+	 * Set the flags.
+	 */
+    flags=EEikDialogFlagNoDrag|EEikDialogFlagFillAppClientRect|
+          EEikDialogFlagNoTitleBar|EEikDialogFlagWait|
+          EEikDialogFlagCbaButtons;
+    /*
+     * Define the functions for left & right softkeys(Options & Back respectively)
+     */
+    buttons=R_AVKON_SOFTKEYS_OPTIONS_BACK;
+    /*
+     * Define a form that points to FORM Resource.  
+     */
+    form=r_YPages_form1;
+}
+
+/*
+ * Create a FORM Resource to display the form dialog.
+ * Set the flags.
+ * Set the items.
+ */
+RESOURCE FORM r_YPages_form1 {
+	/*
+	 * Set the flags.
+	 * Edit Mode Only and Double Spaced Format (to display heading and text in different lines)
+	 */
+    flags = EEikFormUseDoubleSpacedFormat | EEikFormEditModeOnly;
+    
+    /*
+     * Set the form items.
+     * Here, we need just one item to select the category.
+     */
+    items=
+        {
+        DLG_LINE
+            {
+            type=EAknCtPopupFieldText;			// Set the item type as popup field.
+            prompt=STRING_r_gui_Category;		// Set the prompt(title) as "Category".
+            id=EYPagesPopup;					// Set the item id.
+            itemflags=EEikDlgItemTakesEnterKey|EEikDlgItemOfferAllHotKeys;	// Set the item flags.
+            control = POPUP_FIELD_TEXT
+            	{
+                popupfield=POPUP_FIELD
+                    {
+                    width=10;
+                    };
+                textarray=r_category_list;		// Set the list of categories to be displayed.
+                };
+            }
+        };
+}
+
+/*
+ * Create a Resource ARRAY to define City list.
+ */
+
+RESOURCE ARRAY r_category_list {
+    /*
+     * Define the items in the list.
+     */
+        items=
+            {
+            LBUF { txt=STRING_r_gui_Category1; },
+            LBUF { txt=STRING_r_gui_Category2; },
+            LBUF { txt=STRING_r_gui_Category3; },
+            LBUF { txt=STRING_r_gui_Category4; }
+            };
+}
+
+/*
+ * Define a dialog to display the information about companies in selected city and category.
+ */
+RESOURCE DIALOG r_about_heading_pane
+	{
+	flags=EEikDialogFlagNoDrag |EEikDialogFlagCbaButtons |EEikDialogFlagWait;	// Define Dialog flags.
+	/*
+	 * Define the functions for right softkey (Back)
+	 */
+	buttons = R_AVKON_SOFTKEYS_BACK;
+	
+	/*
+	 * Define the items in the dialog.
+	 */
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtPopupHeadingPane;			// Define the dialog type.
+			id = EAknMessageQueryHeaderId;			// Define the dialog id.
+			control = AVKON_HEADING
+				{
+					headinglayout = R_AVKON_LIST_HEADING_PANE_POPUPS;
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				message = "";
+				};
+			}
+		};
+	}
+
+// Strings
+
+RESOURCE TBUF r_example_text { buf = STRING_r_example_text; }

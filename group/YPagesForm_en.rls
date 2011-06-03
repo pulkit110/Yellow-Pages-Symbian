@@ -1,0 +1,23 @@
+// YPagesForm_en.rls
+/*
+ * Define the english strings to be used in the application.
+ */
+
+rls_string STRING_r_gui_start "Start"
+rls_string STRING_r_gui_settings "Select City"
+rls_string STRING_r_gui_text " "
+rls_string STRING_r_gui_city "City"
+rls_string STRING_r_gui_Category "Category"
+
+rls_string STRING_r_example_text "Yellow Pages" 
+rls_string STRING_r_start_selected "Start selected"
+
+rls_string STRING_r_gui_City1 "Chennai"
+rls_string STRING_r_gui_City2 "Delhi"
+rls_string STRING_r_gui_City3 "Kolkata"
+rls_string STRING_r_gui_City4 "Mumbai"
+
+rls_string STRING_r_gui_Category1 "Banks"
+rls_string STRING_r_gui_Category2 "Clinics & Doctors"
+rls_string STRING_r_gui_Category3 "Colleges & Universities"
+rls_string STRING_r_gui_Category4 "Movie Theaters"

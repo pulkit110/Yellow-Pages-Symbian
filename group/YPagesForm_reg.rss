@@ -1,0 +1,20 @@
+// YPagesForm_reg.rss
+
+#include <AppInfo.rh>			
+#include "YPagesUid.h"			// Include the file for Uid
+
+/*
+ * UID2 should always be KUidAppRegistrationResourceFile and UID3 should be 
+ * the unique UID3 assigned to the application
+ */
+UID2 KUidAppRegistrationResourceFile
+UID3 YPAGESUID					// Application UID
+
+/*
+ * Registration file need to containo an APP_REGISTRATION_INFO resource that 
+ * minimally needs to provide the name of the application binary (using the 
+ * app_file statement).
+ */ 
+RESOURCE APP_REGISTRATION_INFO {
+	app_file = "YPages"; 		// Filename of application executable
+}
