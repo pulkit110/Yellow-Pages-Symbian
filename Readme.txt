@@ -1,3 +1,3 @@
-Copy the folder YPages to "C:\Symbian\9.2\S60_3rd_FP1_3\Epoc32\winscw\d"
+This demo is follow-up of series of blog posts that I had written for beginning development with Symbian application.
 
-To Run the Application, follow the instructions (of importing etc.) in the TUTORIALS.
+Follow tutorial: http://pulkitgoyal.in/2011/05/24/step-by-step-tutorial-for-your-first-symbian-application/
